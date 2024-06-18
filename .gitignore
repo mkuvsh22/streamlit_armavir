@@ -1,0 +1,30 @@
+# Виртуальная среда
+venv/
+.venv/
+env/
+.env/
+
+# Папка с файлами компиляции
+__pycache__/
+
+# Логи
+*.log
+*.log*
+
+# Файлы временных данных
+tmp/
+.tmp/
+
+# Файлы конфигурации IDE
+*.idea/
+.vscode/
+
+# Скомпилированные байт-коды Python
+*.pyc
+*.pyo
+
+# Jupyter Notebooks
+*.ipynb
+
+# Markdown
+*.md
