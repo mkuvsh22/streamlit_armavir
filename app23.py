@@ -59,6 +59,30 @@ if st.button('Рецензия', key='review_button', help='Нажмите, чт
     else:
         st.write("Пожалуйста, введите описание фильма.")
 
+# Добавление кнопки "Назад"
+if st.button('Назад', key='back_button', help='Нажмите, чтобы вернуться назад'):
+    js_code = "window.history.back();"
+    st.components.v1.html(f"<script>{js_code}</script>")
+
+# Добавление таймера для автоматического возврата
+st.components.v1.html(
+    """
+    <script>
+    let timeout;
+    function resetTimeout() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+            window.history.back();
+        }, 20000); // 20 секунд
+    }
+    document.addEventListener("mousemove", resetTimeout);
+    document.addEventListener("keypress", resetTimeout);
+    resetTimeout(); // Инициализация таймера
+    </script>
+    """,
+    height=0,
+)
+
 # Изменение цвета кнопки
 st.markdown(
     """
