@@ -18,7 +18,7 @@ def get_response(user_input):
         ]
     }
     headers = {
-        "Authorization": "Bearer " + 't1.9euelZqYnMzNyZKKkJydzZXLnc2XmO3rnpWajs-YlY-Zm4mNzZCemo2Zzczl8_dKcTlM-e8dVhsY_d3z9wogN0z57x1WGxj9zef1656Vms2ciYvOks7PjZKUmM6Ois_J7_zF656Vms2ciYvOks7PjZKUmM6Ois_J.Fd5vcSf0usm__fxZ11RdLLLT1yCW0ADrAj7idcjbdq4MYU1yFvV8k0-siqJUUlN5qEKlh1cjtj1N42xPqxzbBw',
+        "Authorization": "Bearer " + 't1.9euelZqbmYyLno-TkMaQz5rNj5OLi-3rnpWajs-YlY-Zm4mNzZCemo2Zzczl8_cAETBM-e9WdD46_d3z90A_LUz571Z0Pjr9zef1656VmpSVjJibl42Lk8mbl8nIk5KP7_zF656VmpSVjJibl42Lk8mbl8nIk5KP.lzQGvqyFX2mjYjgSPdq_jaYx06uojaSKlIC1iiC5f3c6iQt_7cIbnBpnKHEiiuUPKlqyCAWikEYnHLAh3ic5CA',
         "x-folder-id": "b1gik8r0od91a5kkg895",
     }
     response = requests.post("https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
