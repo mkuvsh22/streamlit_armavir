@@ -28,3 +28,6 @@ tmp/
 
 # Markdown
 *.md
+
+# Environment file
+.env
