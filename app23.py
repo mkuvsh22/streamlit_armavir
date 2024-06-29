@@ -1,5 +1,10 @@
 import streamlit as st
 import requests
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Функция для отправки запроса к модели YandexGPT
 def get_response(user_input):
@@ -18,8 +23,8 @@ def get_response(user_input):
         ]
     }
     headers = {
-        "Authorization": "Bearer " + 't1.9euelZrKyprGlM6KypHOmJOJkpaNye3rnpWajs-YlY-Zm4mNzZCemo2Zzczl9PcIZQBM-e81EwbP3fT3SBN-S_nvNRMGz83n9euelZqampfGlZWdz5eVis6TlpeTzu_8xeuelZqampfGlZWdz5eVis6TlpeTzg.vh2TPgGy7hWTE_8iPh9hC778btCyGg50LKBQK6KKrSzKxawNueQkZiUo7GPMwzb4CTK6SUy20Yok22Ia9gR7AA',
-        "x-folder-id": "b1gik8r0od91a5kkg895",
+        "Authorization": "Bearer " + os.getenv('YANDEX_API_TOKEN'),
+        "x-folder-id": os.getenv('YANDEX_FOLDER_ID'),
     }
     response = requests.post("https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
                              headers=headers, json=req)
@@ -51,54 +56,21 @@ button_style = (
 if st.button('Рецензия', key='review_button', help='Нажмите, чтобы получить рецензию'):
     if user_input:
         response = get_response(user_input)
-        instruction = response["result"]["alternatives"][0]["message"]["text"]
-        st.markdown(
-            f'<font face="Fira Mono"><br><br>{instruction}</font>',
-            unsafe_allow_html=True
-        )
+        if "result" in response and "alternatives" in response["result"]:
+            instruction = response["result"]["alternatives"][0]["message"]["text"]
+            st.markdown(
+                f'<font face="Fira Mono"><br><br>{instruction}</font>',
+                unsafe_allow_html=True
+            )
+        else:
+            st.write("Ошибка в ответе от API. Проверьте запрос и повторите попытку.")
     else:
         st.write("Пожалуйста, введите описание фильма.")
-
-# Automatic redirection after 20 seconds of inactivity
-st.markdown("""
-    <script>
-    var idleTime = 0;
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
-
-    function resetTimer() {
-        idleTime = 0;
-    }
-
-    setInterval(timerIncrement, 1000);
-
-    function timerIncrement() {
-        idleTime = idleTime + 1;
-        if (idleTime > 20) {
-            window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
-        }
-    }
-    </script>
-""", unsafe_allow_html=True)
-
-# Adjust line spacing
-st.markdown("""
-    <style>
-    .stTextInput, .stButton, .stMarkdown {
-        line-height: 1.5;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 # Изменение цвета кнопки
 st.markdown(
     """
     <style>
     .css-14ex4b2-buttonBase {
-        background-color: #008080 !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+   
 
