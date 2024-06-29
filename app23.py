@@ -1,10 +1,5 @@
 import streamlit as st
 import requests
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
 
 # Функция для отправки запроса к модели YandexGPT
 def get_response(user_input):
@@ -23,8 +18,8 @@ def get_response(user_input):
         ]
     }
     headers = {
-        "Authorization": "Bearer " + os.getenv('YANDEX_API_TOKEN'),
-        "x-folder-id": os.getenv('YANDEX_FOLDER_ID'),
+        "Authorization": "Bearer " + 't1.9euelZrKyprGlM6KypHOmJOJkpaNye3rnpWajs-YlY-Zm4mNzZCemo2Zzczl9PcIZQBM-e81EwbP3fT3SBN-S_nvNRMGz83n9euelZqampfGlZWdz5eVis6TlpeTzu_8xeuelZqampfGlZWdz5eVis6TlpeTzg.vh2TPgGy7hWTE_8iPh9hC778btCyGg50LKBQK6KKrSzKxawNueQkZiUo7GPMwzb4CTK6SUy20Yok22Ia9gR7AA',
+        "x-folder-id": "b1gik8r0od91a5kkg895",
     }
     response = requests.post("https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
                              headers=headers, json=req)
@@ -56,14 +51,11 @@ button_style = (
 if st.button('Рецензия', key='review_button', help='Нажмите, чтобы получить рецензию'):
     if user_input:
         response = get_response(user_input)
-        if "result" in response and "alternatives" in response["result"]:
-            instruction = response["result"]["alternatives"][0]["message"]["text"]
-            st.markdown(
-                f'<font face="Fira Mono"><br><br>{instruction}</font>',
-                unsafe_allow_html=True
-            )
-        else:
-            st.write("Ошибка в ответе от API. Проверьте запрос и повторите попытку.")
+        instruction = response["result"]["alternatives"][0]["message"]["text"]
+        st.markdown(
+            f'<font face="Fira Mono"><br><br>{instruction}</font>',
+            unsafe_allow_html=True
+        )
     else:
         st.write("Пожалуйста, введите описание фильма.")
 
@@ -72,5 +64,11 @@ st.markdown(
     """
     <style>
     .css-14ex4b2-buttonBase {
+        background-color: #008080 !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
    
 
