@@ -59,6 +59,37 @@ if st.button('Рецензия', key='review_button', help='Нажмите, чт
     else:
         st.write("Пожалуйста, введите описание фильма.")
 
+# Automatic redirection after 20 seconds of inactivity
+st.markdown("""
+    <script>
+    var idleTime = 0;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+
+    function resetTimer() {
+        idleTime = 0;
+    }
+
+    setInterval(timerIncrement, 1000);
+
+    function timerIncrement() {
+        idleTime = idleTime + 1;
+        if (idleTime > 20) {
+            window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
+        }
+    }
+    </script>
+""", unsafe_allow_html=True)
+
+# Adjust line spacing
+st.markdown("""
+    <style>
+    .stTextInput, .stButton, .stMarkdown {
+        line-height: 1.5;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Изменение цвета кнопки
 st.markdown(
     """
@@ -70,3 +101,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
