@@ -1,5 +1,11 @@
 import streamlit as st
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+IAM_TOKEN = os.getenv("IAM_TOKEN")
 
 # Функция для отправки запроса к модели YandexGPT
 def get_response(user_input):
@@ -18,7 +24,7 @@ def get_response(user_input):
         ]
     }
     headers = {
-        "Authorization": "Bearer " + 't1.9euelZrKyprGlM6KypHOmJOJkpaNye3rnpWajs-YlY-Zm4mNzZCemo2Zzczl9PcIZQBM-e81EwbP3fT3SBN-S_nvNRMGz83n9euelZqampfGlZWdz5eVis6TlpeTzu_8xeuelZqampfGlZWdz5eVis6TlpeTzg.vh2TPgGy7hWTE_8iPh9hC778btCyGg50LKBQK6KKrSzKxawNueQkZiUo7GPMwzb4CTK6SUy20Yok22Ia9gR7AA',
+        "Authorization": f"Bearer {IAM_TOKEN}",
         "x-folder-id": "b1gik8r0od91a5kkg895",
     }
     response = requests.post("https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
@@ -66,7 +72,33 @@ st.markdown(
     .css-14ex4b2-buttonBase {
         background-color: #008080 !important;
     }
+    .element-container {
+        margin-bottom: 15px;
+    }
     </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Переадресация через 30 секунд
+st.markdown(
+    """
+    <script>
+    let timeout;
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('keypress', resetTimer);
+
+    function redirect() {
+        window.location.href = "https://mkuvsh22.github.io/eternalfilmcritic2/";
+    }
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(redirect, 30000);
+    }
+
+    resetTimer();
+    </script>
     """,
     unsafe_allow_html=True
 )
