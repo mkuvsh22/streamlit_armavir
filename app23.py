@@ -42,7 +42,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-user_input = st.text_input("")
+user_input = st.text_input("Введите описание фильма:")
 
 button_style = (
     "background-color: #008080;"
@@ -57,11 +57,14 @@ button_style = (
 if st.button('Рецензия', key='review_button', help='Нажмите, чтобы получить рецензию'):
     if user_input:
         response = get_response(user_input)
-        instruction = response["result"]["alternatives"][0]["message"]["text"]
-        st.markdown(
-            f'<font face="Fira Mono"><br><br>{instruction}</font>',
-            unsafe_allow_html=True
-        )
+        if 'result' in response and 'alternatives' in response['result'] and len(response['result']['alternatives']) > 0:
+            instruction = response["result"]["alternatives"][0]["message"]["text"]
+            st.markdown(
+                f'<font face="Fira Mono"><br><br>{instruction}</font>',
+                unsafe_allow_html=True
+            )
+        else:
+            st.write("Ошибка: Некорректный ответ от API.")
     else:
         st.write("Пожалуйста, введите описание фильма.")
 
