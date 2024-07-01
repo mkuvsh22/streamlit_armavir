@@ -83,6 +83,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank">Вернуться на интро</a>', unsafe_allow_html=True)
+st.write("[Вернуться на интро](https://mkuvsh22.github.io/eternalfilmcritic2/)")
+
 
 
