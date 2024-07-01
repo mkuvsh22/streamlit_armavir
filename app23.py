@@ -83,26 +83,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Переадресация через 30 секунд
-st.markdown(
-    """
-    <script>
-    let timeout;
-    document.addEventListener('mousemove', resetTimer);
-    document.addEventListener('keypress', resetTimer);
+st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank">Вернуться на интро</a>', unsafe_allow_html=True)
 
-    function redirect() {
-        window.location.href = "https://mkuvsh22.github.io/eternalfilmcritic2/";
-    }
-
-    function resetTimer() {
-        clearTimeout(timeout);
-        timeout = setTimeout(redirect, 30000);
-    }
-
-    resetTimer();
-    </script>
-    """,
-    unsafe_allow_html=True
-)
 
