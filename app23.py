@@ -87,5 +87,3 @@ st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_b
 
 
 
-
-
