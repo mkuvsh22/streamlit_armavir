@@ -44,7 +44,7 @@ def send_prompt(prompt):
 
 def send_blueprint(prompt: str):
     prompt = {
-        "modelUri": "bt14n3vjsod6g6jksd97",
+        "modelUri": "ds://bt14n3vjsod6g6jksd97",
         "completionOptions": {
             "stream": False,
             "temperature": 0.1,
