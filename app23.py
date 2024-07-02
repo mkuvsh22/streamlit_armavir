@@ -144,10 +144,12 @@ st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_b
 st.markdown(
     """
     <script>
+    console.log("Script loaded");  // Debug message
     let timer;
     function resetTimer() {
         clearTimeout(timer);
         timer = setTimeout(() => {
+            console.log("Redirecting...");  // Debug message
             window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
         }, 30000); // 30 секунд
     }
