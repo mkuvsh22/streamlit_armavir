@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-IAM_TOKEN = os.getenv("IAM_TOKEN")
+API = os.getenv("API")
 
 # Функция для отправки запроса к модели YandexGPT
 def get_response(user_input):
@@ -24,7 +24,7 @@ def get_response(user_input):
         ]
     }
     headers = {
-        "Authorization": f"Bearer {IAM_TOKEN}",
+        "Authorization": f"Bearer {API}",
         "x-folder-id": "b1gik8r0od91a5kkg895",
     }
     response = requests.post("https://llm.api.cloud.yandex.net/foundationModels/v1/completion",
