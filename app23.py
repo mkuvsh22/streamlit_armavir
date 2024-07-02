@@ -85,6 +85,23 @@ st.markdown(
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
 
+st.markdown("""
+    <script>
+    var timeout;
+    var redirectUrl = "https://mkuvsh22.github.io/eternalfilmcritic2/";
 
+    function resetTimer() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 30000);  // 30 секунд
+    }
+
+    document.body.addEventListener("mousemove", resetTimer);
+    document.body.addEventListener("keydown", resetTimer);
+
+    resetTimer();  // Инициализация таймера при загрузке страницы
+    </script>
+    """, unsafe_allow_html=True)
 
 
