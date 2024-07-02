@@ -118,33 +118,25 @@ st.markdown(
 
 # Таймер для перезагрузки страницы
 timer_code = """
-<!DOCTYPE html>
-<html>
-<head>
-    <script type="text/javascript">
-        console.log("Script loaded");  // Debug message
-        let timer;
-        function resetTimer() {
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                console.log("Redirecting...");  // Debug message
-                window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
-            }, 30000); // 30 секунд
-        }
-        window.onload = resetTimer;
-        window.onmousemove = resetTimer;
-        window.onmousedown = resetTimer; // включите любые события, которые хотите отслеживать
-        window.ontouchstart = resetTimer;
-        window.onclick = resetTimer;
-        window.onkeypress = resetTimer;
-    </script>
-</head>
-<body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-</body>
-</html>
+<script type="text/javascript">
+    console.log("Script loaded");  // Debug message
+    let timer;
+    function resetTimer() {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            console.log("Redirecting...");  // Debug message
+            window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
+        }, 30000); // 30 секунд
+    }
+    window.onload = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onmousedown = resetTimer; // включите любые события, которые хотите отслеживать
+    window.ontouchstart = resetTimer;
+    window.onclick = resetTimer;
+    window.onkeypress = resetTimer;
+</script>
 """
 
-st.components.v1.html(timer_code)
+st.components.v1.html(timer_code, height=0)
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
