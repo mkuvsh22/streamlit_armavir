@@ -121,7 +121,7 @@ timer_code = """
 <script type="text/javascript">
     setInterval(function() {
         window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
-    }, 60000); // 60 секунд
+    }, 30000); // 60 секунд
 </script>
 """
 
