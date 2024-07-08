@@ -1,8 +1,8 @@
 import streamlit as st
 import requests
 import os
-from dotenv import load_dotenv
 import time
+from dotenv import load_dotenv
 
 # Загрузка переменных окружения
 load_dotenv()
@@ -104,18 +104,20 @@ st.markdown(
 )
 
 # Таймер для перенаправления на другой веб-адрес через 60 секунд
-timer_code = """
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="refresh" content="60; url=https://mkuvsh22.github.io/eternalfilmcritic2/">
-</head>
-<body>
-    <p>Вы будете перенаправлены через 60 секунд...</p>
-</body>
-</html>
-"""
+if 'start_time' not in st.session_state:
+    st.session_state.start_time = time.time()
 
-st.components.v1.html(timer_code, height=100)
+time_elapsed = time.time() - st.session_state.start_time
+
+if time_elapsed > 20:
+    st.markdown(
+        """
+        <meta http-equiv="refresh" content="0; url=https://mkuvsh22.github.io/eternalfilmcritic2/">
+        """,
+        unsafe_allow_html=True
+    )
+    st.stop()
+else:
+    st.write(f"Вы будете перенаправлены через {20 - int(time_elapsed)} секунд.")
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
