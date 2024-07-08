@@ -109,7 +109,7 @@ if 'start_time' not in st.session_state:
 
 time_elapsed = time.time() - st.session_state.start_time
 
-if time_elapsed > 60:
+if time_elapsed > 30:
     st.markdown(
         """
         <meta http-equiv="refresh" content="0; url=https://mkuvsh22.github.io/eternalfilmcritic2/">
@@ -117,7 +117,7 @@ if time_elapsed > 60:
         unsafe_allow_html=True
     )
 else:
-    st.write(f"Вы будете перенаправлены через {60 - int(time_elapsed)} секунд.")
+    st.write(f"Вы будете перенаправлены через {30 - int(time_elapsed)} секунд.")
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
 
