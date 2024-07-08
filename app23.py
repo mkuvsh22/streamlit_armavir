@@ -124,7 +124,7 @@ timer_code = """
         clearTimeout(timer);
         timer = setTimeout(() => {
             window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
-        }, 30000); // 30 секунд
+        }, 10000); // 30 секунд
     }
     window.onload = resetTimer;
     window.onmousemove = resetTimer;
