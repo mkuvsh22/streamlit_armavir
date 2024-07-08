@@ -1,13 +1,11 @@
 import streamlit as st
 import requests
 import os
-import time
 from dotenv import load_dotenv
+import time
 
-# Загрузка переменных окружения
 load_dotenv()
 
-# Получение API ключа из .env файла
 API_KEY = os.getenv("API_KEY")
 
 def send_prompt(prompt):
@@ -24,6 +22,7 @@ def send_prompt(prompt):
         return text
     elif response.status_code == 429:
         time.sleep(1)
+        
         response = requests.post(url, headers=headers, json=prompt)
         if response.status_code == 200:
             response_json = response.json()
@@ -58,8 +57,12 @@ def send_blueprint(prompt: str):
             }
         ]
     }
+    
     result = send_prompt(prompt)
+    
+    # delay
     time.sleep(0.05)
+    
     return result
 
 # Интерфейс Streamlit
@@ -74,6 +77,16 @@ st.markdown(
 )
 
 user_input = st.text_input("Введите описание фильма:")
+
+button_style = (
+    "background-color: #008080;"
+    "color: black;"
+    "border-radius: 4px;"
+    "padding: 10px 20px;"
+    "font-size: 16px;"
+    "border: none;"
+    "cursor: pointer;"
+)
 
 if st.button('Рецензия', key='review_button', help='Нажмите, чтобы получить рецензию'):
     if user_input:
@@ -103,21 +116,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Таймер для перенаправления на другой веб-адрес через 60 секунд
-if 'start_time' not in st.session_state:
-    st.session_state.start_time = time.time()
+st.write("Если кинокритик не хочет отвечать, попробуйте заменить слова в запросе.")
 
-time_elapsed = time.time() - st.session_state.start_time
-
-if time_elapsed > 20:
-    st.markdown(
-        """
-        <meta http-equiv="refresh" content="0; url=https://mkuvsh22.github.io/eternalfilmcritic2/">
-        """,
-        unsafe_allow_html=True
-    )
-    st.stop()
-else:
-    st.write(f"Вы будете перенаправлены через {20 - int(time_elapsed)} секунд.")
-
-st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
+st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Пожалуйста, нажмите сюда после окончания процесса</a>', unsafe_allow_html=True)
