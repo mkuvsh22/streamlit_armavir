@@ -4,8 +4,10 @@ import os
 from dotenv import load_dotenv
 import time
 
+# Загрузка переменных окружения
 load_dotenv()
 
+# Получение API ключа из .env файла
 API_KEY = os.getenv("API_KEY")
 
 def send_prompt(prompt):
@@ -22,7 +24,6 @@ def send_prompt(prompt):
         return text
     elif response.status_code == 429:
         time.sleep(1)
-        
         response = requests.post(url, headers=headers, json=prompt)
         if response.status_code == 200:
             response_json = response.json()
@@ -57,12 +58,8 @@ def send_blueprint(prompt: str):
             }
         ]
     }
-    
     result = send_prompt(prompt)
-    
-    # delay
     time.sleep(0.05)
-    
     return result
 
 # Интерфейс Streamlit
@@ -77,16 +74,6 @@ st.markdown(
 )
 
 user_input = st.text_input("Введите описание фильма:")
-
-button_style = (
-    "background-color: #008080;"
-    "color: black;"
-    "border-radius: 4px;"
-    "padding: 10px 20px;"
-    "font-size: 16px;"
-    "border: none;"
-    "cursor: pointer;"
-)
 
 if st.button('Рецензия', key='review_button', help='Нажмите, чтобы получить рецензию'):
     if user_input:
@@ -115,5 +102,20 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Таймер для перенаправления на другой веб-адрес через 60 секунд
+timer_code = """
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="60; url=https://mkuvsh22.github.io/eternalfilmcritic2/">
+</head>
+<body>
+    <p>Вы будете перенаправлены через 60 секунд...</p>
+</body>
+</html>
+"""
+
+st.components.v1.html(timer_code, height=100)
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
