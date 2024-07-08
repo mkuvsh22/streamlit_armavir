@@ -117,8 +117,9 @@ st.markdown(
 )
 
 # Таймер для перезагрузки страницы
-timer_code = """
-<script type="text/javascript">
+st.markdown(
+    """
+    <script>
     let timer;
     function resetTimer() {
         clearTimeout(timer);
@@ -132,9 +133,10 @@ timer_code = """
     window.ontouchstart = resetTimer;
     window.onclick = resetTimer;
     window.onkeypress = resetTimer;
-</script>
-"""
-
-st.components.v1.html(timer_code, height=0)
+    </script>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
+
