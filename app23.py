@@ -116,27 +116,5 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Таймер для перезагрузки страницы
-st.markdown(
-    """
-    <script>
-    let timer;
-    function resetTimer() {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
-        }, 30000); // 30 секунд
-    }
-    window.onload = resetTimer;
-    window.onmousemove = resetTimer;
-    window.onmousedown = resetTimer; // включите любые события, которые хотите отслеживать
-    window.ontouchstart = resetTimer;
-    window.onclick = resetTimer;
-    window.onkeypress = resetTimer;
-    </script>
-    """,
-    unsafe_allow_html=True
-)
-
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
 
