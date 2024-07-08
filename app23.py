@@ -116,25 +116,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Таймер для перезагрузки страницы
+# Таймер для перезагрузки страницы каждые 60 секунд
 timer_code = """
 <script type="text/javascript">
-    let timer;
-    function resetTimer() {
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
-        }, 20000); // 20 секунд
-    }
-    window.onload = resetTimer;
-    window.onmousemove = resetTimer;
-    window.onmousedown = resetTimer; // включите любые события, которые хотите отслеживать
-    window.ontouchstart = resetTimer;
-    window.onclick = resetTimer;
-    window.onkeypress = resetTimer;
+    setInterval(function() {
+        window.location.href = 'https://mkuvsh22.github.io/eternalfilmcritic2/';
+    }, 60000); // 60 секунд
 </script>
 """
 
 st.components.v1.html(timer_code, height=0)
 
 st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #008080;">Вернуться на интро</a>', unsafe_allow_html=True)
+
