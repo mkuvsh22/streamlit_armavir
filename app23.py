@@ -118,4 +118,4 @@ st.markdown(
 
 st.write("Если кинокритик не хочет отвечать, попробуйте заменить слова в запросе.")
 
-st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic2/" target="_blank" style="color: #D52941;">Пожалуйста, нажмите сюда после окончания процесса</a>', unsafe_allow_html=True)
+st.markdown('<a href="https://mkuvsh22.github.io/eternalfilmcritic3/" target="_blank" style="color: #D52941;">Пожалуйста, нажмите сюда после окончания процесса</a>', unsafe_allow_html=True)
